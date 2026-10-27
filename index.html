@@ -2,100 +2,125 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แบบสำรวจการบริหารจัดการพื้นที่ ศพช.ลำปาง</title>
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #f8f9fa; font-family: 'Sarabun', sans-serif; }
-    .card-header { background-color: #198754; color: white; }
-    .section-title { font-weight: bold; color: #198754; border-bottom: 2px solid #198754; padding-bottom: 5px; margin-top: 25px; margin-bottom: 15px; }
+    body { 
+      background-color: #f8f9fa; 
+      font-family: 'Sarabun', sans-serif; 
+    }
+    .card-header { 
+      background-color: #198754; 
+      color: white; 
+    }
+    .section-title { 
+      font-weight: 600; 
+      color: #198754; 
+      border-bottom: 2px solid #198754; 
+      padding-bottom: 6px; 
+      margin-top: 24px; 
+      margin-bottom: 16px; 
+    }
   </style>
 </head>
 <body>
+
 <div class="container my-4" style="max-width: 800px;">
-  <div class="card shadow-sm">
-    <div class="card-header text-center py-3">
-      <h5 class="mb-1">แบบสำรวจสภาพปัจจุบัน ปัญหาการบริหารจัดการพื้นที่ และโครงสร้างรายจ่าย</h5>
-      <small>งานวิจัย: การพัฒนารูปแบบการบริหารจัดการพื้นที่ศูนย์ศึกษาและพัฒนาชุมชนลำปางสู่ต้นแบบการพึ่งตนเองอย่างยั่งยืนตามหลักปรัชญาของเศรษฐกิจพอเพียง</small>
+  <div class="card shadow-sm border-0">
+    <div class="card-header text-center py-4">
+      <h5 class="mb-2 fw-bold">แบบสำรวจสภาพปัจจุบัน ปัญหาการบริหารจัดการพื้นที่ และโครงสร้างรายจ่าย</h5>
+      <p class="mb-0 small">งานวิจัย: การพัฒนารูปแบบการบริหารจัดการพื้นที่ศูนย์ศึกษาและพัฒนาชุมชนลำปางสู่ต้นแบบการพึ่งตนเองอย่างยั่งยืนตามหลักปรัชญาของเศรษฐกิจพอเพียง</p>
     </div>
-    <div class="card-body p-4">
+    
+    <div class="card-body p-4 bg-white">
       <form id="surveyForm" onsubmit="submitSurvey(event)">
         
-        <!-- ข้อมูลทั่วไป -->
-        <div class="section-title">๑. ข้อมูลทั่วไป</div>
-        <div class="mb-3">
-          <label class="form-label">๑. ชื่อผู้ทำแบบสำรวจ <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" name="name" required placeholder="ชื่อ-นามสกุล">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">๒. โซนที่รับผิดชอบ <span class="text-danger">*</span></label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="zone" value="๒.๑ พื้นที่ฐานการเรียนรู้และบริเวณใกล้เคียง" required id="z1">
-            <label class="form-check-label" for="z1">๒.๑ พื้นที่ฐานการเรียนรู้และบริเวณใกล้เคียง</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="zone" value="๒.๒ พื้นที่ส่วนกลาง" id="z2">
-            <label class="form-check-label" for="z2">๒.๒ พื้นที่ส่วนกลาง</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="zone" value="๒.๓ พื้นที่อาคาร" id="z3">
-            <label class="form-check-label" for="z3">๒.๓ พื้นที่อาคาร</label>
-          </div>
-        </div>
-
-        <!-- การวิเคราะห์โครงสร้างรายจ่าย -->
-        <div class="section-title">๓. การวิเคราะห์โครงสร้างรายจ่ายและผลผลิต</div>
+        <!-- ส่วนที่ 1 -->
+        <div class="section-title">ข้อมูลทั่วไป</div>
         
         <div class="mb-3">
-          <label class="form-label fw-bold">๓.๑ จำนวนต้นไม้ แต่ละชนิด ในเฉพาะเขตรับผิดชอบ (ระบุชนิดและจำนวน)</label>
-          <div class="row g-2 mb-2">
-            <div class="col-md-6"><input type="text" class="form-control" name="tree1" placeholder="ชนิดที่ 1 (เช่น ไม้สัก 20 ต้น)"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="tree2" placeholder="ชนิดที่ 2"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="tree3" placeholder="ชนิดที่ 3"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="tree4" placeholder="ชนิดที่ 4"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="tree5" placeholder="ชนิดที่ 5"></div>
+          <label class="form-label fw-bold">๑ ชื่อผู้ทำแบบสำรวจ <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" name="name" required placeholder="ระบุชื่อ-นามสกุล">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">๒ เลือก โซนที่รับผิดชอบ <span class="text-danger">*</span></label>
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="radio" name="zone" value="๒.๑ พื้นที่ฐานการเรียนรู้และบริเวณ ใกล้เคียง" id="zone1" required>
+            <label class="form-check-label" for="zone1">๒.๑ พื้นที่ฐานการเรียนรู้และบริเวณ ใกล้เคียง</label>
           </div>
-          <textarea class="form-control" name="tree_other" rows="2" placeholder="อื่นๆ หากมีมากกว่า 5 ชนิด (ระบุชนิดและจำนวน)"></textarea>
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="radio" name="zone" value="๒.๒ พื้นที่ส่วนกลาง" id="zone2">
+            <label class="form-check-label" for="zone2">๒.๒ พื้นที่ส่วนกลาง</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="zone" value="๒.๓ พื้นที่อาคาร" id="zone3">
+            <label class="form-check-label" for="zone3">๒.๓ พื้นที่อาคาร</label>
+          </div>
+        </div>
+
+        <!-- ส่วนที่ 2 -->
+        <div class="section-title">การวิเคราะห์โครงสร้างรายจ่าย</div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">๓.๑ จำนวนต้นไม้ แต่ละชนิด ในเฉพาะเขตรับผิดชอบ</label>
+          <div class="row g-2 mb-2">
+            <div class="col-md-6"><input type="text" class="form-control" name="tree1" placeholder="ชนิดต้นไม้ 1 (เช่น กล้วยน้ำว้า ๑๕ ต้น)"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="tree2" placeholder="ชนิดต้นไม้ 2"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="tree3" placeholder="ชนิดต้นไม้ 3"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="tree4" placeholder="ชนิดต้นไม้ 4"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="tree5" placeholder="ชนิดต้นไม้ 5"></div>
+          </div>
+          <textarea class="form-control" name="tree_other" rows="2" placeholder="อื่นๆ หากมีมากกว่านั้น"></textarea>
         </div>
 
         <div class="mb-3">
           <label class="form-label fw-bold">๓.๒ ต้นทุนค่าดูแล หรือบำรุงรักษา ในพื้นที่รับผิดชอบ รายเดือน (บาท/เดือน) <span class="text-danger">*</span></label>
-          <input type="number" class="form-control" name="maintenance_cost" required placeholder="ระบุตัวเลขจำนวนเงิน เช่น 3500">
+          <input type="number" class="form-control" name="maintenance_cost" required placeholder="เช่น 500">
         </div>
 
         <div class="mb-3">
-          <label class="form-label fw-bold">๓.๓ ผลผลิตจากเขตพื้นที่รับผิดชอบ (ระบุผลผลิตและจำนวน/ปริมาณ)</label>
+          <label class="form-label fw-bold">๓.๓ ผลผลิตจากเขตพื้นที่รับผิดชอบ ได้แก่ จำนวน เท่าไร</label>
           <div class="row g-2 mb-2">
-            <div class="col-md-6"><input type="text" class="form-control" name="prod1" placeholder="ผลผลิตที่ 1 (เช่น กล้วย 30 หวี)"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="prod2" placeholder="ผลผลิตที่ 2"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="prod3" placeholder="ผลผลิตที่ 3"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="prod4" placeholder="ผลผลิตที่ 4"></div>
-            <div class="col-md-6"><input type="text" class="form-control" name="prod5" placeholder="ผลผลิตที่ 5"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="prod1" placeholder="ผลผลิต 1 (เช่น เลม่อน สามสิบลูก)"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="prod2" placeholder="ผลผลิต 2 (เช่น กล้วย ๔ หวี)"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="prod3" placeholder="ผลผลิต 3"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="prod4" placeholder="ผลผลิต 4"></div>
+            <div class="col-md-6"><input type="text" class="form-control" name="prod5" placeholder="ผลผลิต 5"></div>
           </div>
-          <textarea class="form-control" name="prod_other" rows="2" placeholder="อื่นๆ หากมีมากกว่า 5 รายการ"></textarea>
+          <textarea class="form-control" name="prod_other" rows="2" placeholder="อื่นๆ หากมีมากกว่านั้น"></textarea>
         </div>
 
         <div class="mb-3">
           <label class="form-label fw-bold">๓.๔ รายได้จากเขตพื้นที่รับผิดชอบ และแหล่งที่มา</label>
           <div class="row g-2 mb-2">
-            <div class="col-md-4"><input type="text" class="form-control" name="income1" placeholder="รายการที่ 1 (จำนวนเงิน - แหล่งที่มา)"></div>
-            <div class="col-md-4"><input type="text" class="form-control" name="income2" placeholder="รายการที่ 2"></div>
-            <div class="col-md-4"><input type="text" class="form-control" name="income3" placeholder="รายการที่ 3"></div>
+            <div class="col-md-4"><input type="text" class="form-control" name="income1" placeholder="รายได้ 1 (เช่น สองร้อยบาท จากเลม่อน)"></div>
+            <div class="col-md-4"><input type="text" class="form-control" name="income2" placeholder="รายได้ 2"></div>
+            <div class="col-md-4"><input type="text" class="form-control" name="income3" placeholder="รายได้ 3"></div>
           </div>
-          <textarea class="form-control" name="income_other" rows="2" placeholder="อื่นๆ หากมีมากกว่า 3 รายการ"></textarea>
+          <textarea class="form-control" name="income_other" rows="2" placeholder="อื่นๆ หากมีมากกว่านั้น"></textarea>
         </div>
 
         <div class="text-center mt-4">
-          <button type="submit" id="btnSubmit" class="btn btn-success px-5 py-2">บันทึกข้อมูลแบบสำรวจ</button>
+          <button type="submit" id="btnSubmit" class="btn btn-success px-5 py-2 fw-bold">บันทึกข้อมูลแบบสำรวจ</button>
         </div>
       </form>
+      
       <div id="statusMsg" class="mt-3 text-center"></div>
     </div>
   </div>
 </div>
 
+<!-- สคริปต์ส่งข้อมูลไปยัง Google Apps Script Web App -->
 <script>
 function submitSurvey(e) {
   e.preventDefault();
+  
   const form = document.getElementById('surveyForm');
   const btn = document.getElementById('btnSubmit');
   const status = document.getElementById('statusMsg');
@@ -106,24 +131,30 @@ function submitSurvey(e) {
 
   const formData = Object.fromEntries(new FormData(form).entries());
 
-  google.script.run
-    .withSuccessHandler(function(res) {
-      if(res.success) {
-        status.innerHTML = '<div class="alert alert-success">บันทึกข้อมูลเรียบร้อยแล้ว ขอบคุณสำหรับการให้ข้อมูล</div>';
-        form.reset();
-      } else {
-        status.innerHTML = '<div class="alert alert-danger">เกิดข้อผิดพลาด: ' + res.error + '</div>';
-      }
-      btn.disabled = false;
-      btn.innerText = "บันทึกข้อมูลแบบสำรวจ";
-    })
-    .withFailureHandler(function(err) {
-      status.innerHTML = '<div class="alert alert-danger">เกิดข้อผิดพลาดในการส่งข้อมูล</div>';
-      btn.disabled = false;
-      btn.innerText = "บันทึกข้อมูลแบบสำรวจ";
-    })
-    .processForm(formData);
+  // URL ของ Web App จาก Google Apps Script
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBo6zWTiR5oLUrHCV3RT9GGbeJiFmc85OxkcHkh6jcGB9UqDvz83zJ2KtS-ZAW5qlHuQ/exec";
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(function() {
+    status.innerHTML = '<div class="alert alert-success mt-3">บันทึกข้อมูลเรียบร้อยแล้ว ขอบคุณสำหรับการให้ข้อมูล</div>';
+    form.reset();
+  })
+  .catch(function(err) {
+    status.innerHTML = '<div class="alert alert-danger mt-3">เกิดข้อผิดพลาดในการบันทึกข้อมูล กรุณาลองใหม่อีกครั้ง</div>';
+  })
+  .finally(function() {
+    btn.disabled = false;
+    btn.innerText = "บันทึกข้อมูลแบบสำรวจ";
+  });
 }
 </script>
+
 </body>
 </html>
